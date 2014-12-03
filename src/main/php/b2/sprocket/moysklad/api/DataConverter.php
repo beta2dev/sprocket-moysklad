@@ -48,8 +48,6 @@ class DataConverter
          *
          */
         $xml_root=simplexml_load_string($param);
-        $attrs=$xml_root->attributes();
-
 
         $good=new Good();
         $good->setBuyPrice(   (string)$xml_root['buyPrice']);
@@ -58,11 +56,9 @@ class DataConverter
         $good->setMinPrice(   (string)$xml_root['minPrice']);
         $good->setUomUuid(    (string)$xml_root['uomUuid']);
         $good->setSalePrice(  (string)$xml_root['salePrice']);
-        if(strtolower($xml_root['archived'])=='true'){
-            $good->setArchived(true);
-        } else {
-            $good->setArchived(false);
-        }
+
+        $good->setArchived(filter_var($xml_root['archived'], FILTER_VALIDATE_BOOLEAN));
+
         $good->setParentUuid( (string)$xml_root['parentUuid']);
         $good->setProductCode((string)$xml_root['productCode']);
         $good->setName(       (string)$xml_root['name']);
@@ -196,6 +192,44 @@ class DataConverter
 
 
         return $image;
+    }
+
+
+    function xmlToGoodFolder($param){
+        /*<goodFolder
+            archived="false"
+            productCode=""
+            vat="10" name="ГруппаКорневая"
+           updated="2014-11-24T17:16:55.586+03:00" updatedBy="admin@test_api" readMode="ALL" changeMode="SELF">
+            <accountUuid>a0ee97e5-6c18-11e4-7a07-673d00001bc4</accountUuid>
+            <accountId>a0ee97e5-6c18-11e4-7a07-673d00001bc4</accountId>
+            <uuid>8de88966-73e4-11e4-90a2-8ecb00264152</uuid>
+            <code>1</code>
+            <externalcode>NLfKBysYi0_lfpDiMP5kA1</externalcode>
+            <description></description>
+        </goodFolder>*/
+        $xml_root=simplexml_load_string($param);
+
+        $goodFolder=new GoodFolder();
+
+        $goodFolder->setArchived(filter_var($xml_root['archived'], FILTER_VALIDATE_BOOLEAN));
+
+        $goodFolder->setProductCode((string)$xml_root['productCode']);
+        $goodFolder->setVat(         (int)  $xml_root['vat']);
+        $goodFolder->setName(        (string)$xml_root['name']);
+        $goodFolder->setUpdated(     (string)$xml_root['updated']);
+        $goodFolder->setUpdatedBy(   (string)$xml_root['updatedBy']);
+        $goodFolder->setReadMode(    (string)$xml_root['readMode']);
+        $goodFolder->setChangeMode(  (string)$xml_root['changeMode']);
+
+        $goodFolder->setAccountUuid( (string) $xml_root->accountUuid);
+        $goodFolder->setAccountId(   (string)$xml_root->accountId);
+        $goodFolder->setUuid(        (string)$xml_root->uuid);
+        $goodFolder->setCode(        (string) $xml_root->code);
+        $goodFolder->setExternalcode((string)$xml_root->externalcode);
+        $goodFolder->setDescription( (string)$xml_root->description);
+
+        return $goodFolder;
     }
 
 

@@ -32,6 +32,10 @@ class GoodFolder extends MoyskladObject
      */
     private $name;
 
+    /**
+     * @var int
+     */
+    private $vat;
 
     /**
      * @var string
@@ -144,6 +148,22 @@ class GoodFolder extends MoyskladObject
     public function getProductCode()
     {
         return $this->productCode;
+    }
+
+    /**
+     * @param int $vat
+     */
+    public function setVat($vat)
+    {
+        $this->vat = $vat;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVat()
+    {
+        return $this->vat;
     }
 
 

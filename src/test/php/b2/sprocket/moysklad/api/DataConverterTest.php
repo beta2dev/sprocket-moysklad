@@ -179,7 +179,8 @@ class DataConverterTest extends \PHPUnit_Framework_TestCase
 
         $good->setImages($images);
 
-
+        $s_fnc=serialize($good);
+        $s_xml=serialize($good_xml);
 
         if(strcmp($s_xml,$s_fnc)==0){
             $this->assertTrue(true);
@@ -188,18 +189,79 @@ class DataConverterTest extends \PHPUnit_Framework_TestCase
         }
 
 
+    }
+
+
+    public function testXmlToGoodFolder()
+    {
+        $xml='<goodFolder
+            archived="false"
+            productCode=""
+            vat="10" name="ГруппаКорневая"
+           updated="2014-11-24T17:16:55.586+03:00" updatedBy="admin@test_api" readMode="ALL" changeMode="SELF">
+            <accountUuid>a0ee97e5-6c18-11e4-7a07-673d00001bc4</accountUuid>
+            <accountId>a0ee97e5-6c18-11e4-7a07-673d00001bc4</accountId>
+            <uuid>8de88966-73e4-11e4-90a2-8ecb00264152</uuid>
+            <code>1</code>
+            <externalcode>NLfKBysYi0_lfpDiMP5kA1</externalcode>
+            <description></description>
+        </goodFolder>';
+
+        $converter=new DataConverter();
+        $goodFolder_xml=$converter->xmlToGoodFolder($xml);
+
+
+        $goodFolder=new GoodFolder();
+        $goodFolder->setArchived(false);
+
+        $goodFolder->setProductCode( (string)'');
+        $goodFolder->setVat(         (int)'10');
+        $goodFolder->setName(        (string)"ГруппаКорневая");
+        $goodFolder->setUpdated(     (string)"2014-11-24T17:16:55.586+03:00");
+        $goodFolder->setUpdatedBy(   (string)"admin@test_api");
+        $goodFolder->setReadMode(    (string)"ALL");
+        $goodFolder->setChangeMode(  (string)"SELF");
+
+        $goodFolder->setAccountUuid( (string)'a0ee97e5-6c18-11e4-7a07-673d00001bc4');
+        $goodFolder->setAccountId(   (string)'a0ee97e5-6c18-11e4-7a07-673d00001bc4');
+        $goodFolder->setUuid(        (string)'8de88966-73e4-11e4-90a2-8ecb00264152');
+        $goodFolder->setCode(        (string)'1');
+        $goodFolder->setExternalcode((string)'NLfKBysYi0_lfpDiMP5kA1');
+        $goodFolder->setDescription( (string)'');
+
+
+        $s_fnc=serialize($goodFolder);
+        $s_xml=serialize($goodFolder_xml);
 
 
 
+        for($i=0;$i<=strlen($s_fnc);$i++){
+            $c1=substr($s_fnc,$i,1);
+            $c2=substr($s_xml,$i,1);
+            if($c1!==$c2){
+                echo 'xml:::'.PHP_EOL;
+                echo substr($s_xml,$i-20,25).PHP_EOL;
+                echo 'fnc:::'.PHP_EOL;
+                echo substr($s_fnc,$i-20,25);
+                echo $c1.'!='.$c2;
+                $this->assertTrue(false);
+                break;//die(0);//var_export(NULL);
+            } else {
+
+            }
+
+        }
 
 
 
-
-        return $good;
-
-
+        if(strcmp($s_xml,$s_fnc)==0){
+            $this->assertTrue(true);
+        } else {
+            $this->assertTrue(false);
+        }
 
     }
+
 }
 
 
