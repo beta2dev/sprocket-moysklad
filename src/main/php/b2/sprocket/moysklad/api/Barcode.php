@@ -6,7 +6,7 @@
  * Time: 13:56
  */
 
-
+namespace b2\sprocket\moysklad\api;
 
 class Barcode extends MoyskladRec
 {

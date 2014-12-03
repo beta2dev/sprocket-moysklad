@@ -6,6 +6,10 @@
  * Time: 17:20
  */
 
+//namespace b2\;
+
+
+namespace b2\sprocket\moysklad\api;
 
 /**
  * Class Attribute

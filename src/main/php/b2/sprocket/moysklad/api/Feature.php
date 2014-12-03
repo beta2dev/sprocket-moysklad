@@ -7,6 +7,8 @@
  */
 
 
+namespace b2\sprocket\moysklad\api;
+
 /**
  * Class Feature
  *

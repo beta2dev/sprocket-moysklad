@@ -6,12 +6,14 @@
  * Time: 16:51
  */
 
+
+namespace b2\sprocket\moysklad\api;
 /**
  * Class Image
  *
  * изображение товара
  */
-class Image extends MoyskladObject
+class GoodImage extends MoyskladObject
 {
     /**
      * @var string

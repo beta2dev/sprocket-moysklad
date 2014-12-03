@@ -6,6 +6,8 @@
  * Time: 14:32
  */
 
+
+namespace b2\sprocket\moysklad\api;
 /**
  * Class MoyskladRec
  *
@@ -38,6 +40,8 @@ class MoyskladRec {
      * @var string
      */
     protected $readMode;
+
+    protected $changeMode;
 
     /**
      * @param string $accountId
@@ -72,7 +76,7 @@ class MoyskladRec {
     }
 
     /**
-     * @param string $changeMode
+     * @param mixed $changeMode
      */
     public function setChangeMode($changeMode)
     {
@@ -80,7 +84,7 @@ class MoyskladRec {
     }
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getChangeMode()
     {
@@ -118,14 +122,6 @@ class MoyskladRec {
     {
         return $this->uuid;
     }
-
-    /**
-     * @internal example $changeMode="SELF"
-     * @var string
-     */
-    protected $changeMode;
-
-
 
 
 

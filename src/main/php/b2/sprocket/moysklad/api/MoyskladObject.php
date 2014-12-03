@@ -6,6 +6,8 @@
  * Time: 15:39
  */
 
+
+namespace b2\sprocket\moysklad\api;
 /**
  * Class MoyskladObject
  *

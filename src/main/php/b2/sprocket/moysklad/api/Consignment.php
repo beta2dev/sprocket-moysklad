@@ -6,6 +6,8 @@
  * Time: 19:07
  */
 
+namespace b2\sprocket\moysklad\api;
+
 /**
  * Class Consignment
  *

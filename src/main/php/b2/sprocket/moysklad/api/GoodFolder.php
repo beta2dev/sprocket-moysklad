@@ -5,24 +5,21 @@
  * Date: 24.11.14
  * Time: 17:28
  */
-namespace b2\gate\moysklad;
+namespace b2\sprocket\moysklad\api;
+
 /**
  * Class GoodFolder
  *
  * Группа товаров внутри справочника "Номенклатура"
  */
-class GoodFolder extends MoyskladObject {
+class GoodFolder extends MoyskladObject
+{
 
     /**
      * @var bool
      */
     private $archived;
 
-
-    /**
-    * @var string
-    */
-    private $parentUuid;
 
     /**
      * @var string
@@ -131,22 +128,6 @@ class GoodFolder extends MoyskladObject {
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * @param string $parentUuid
-     */
-    public function setParentUuid($parentUuid)
-    {
-        $this->parentUuid = $parentUuid;
-    }
-
-    /**
-     * @return string
-     */
-    public function getParentUuid()
-    {
-        return $this->parentUuid;
     }
 
     /**

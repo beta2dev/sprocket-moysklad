@@ -6,26 +6,4 @@
  * Time: 16:58
  */
 
-namespace b2\gate\moysklad;
-class MoyskladManager
-{
-    public function
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 

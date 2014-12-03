@@ -6,6 +6,8 @@
  * Time: 14:25
  */
 
+
+namespace b2\sprocket\moysklad\api;
 /**
  * Class Pack
  *
