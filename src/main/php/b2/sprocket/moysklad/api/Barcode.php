@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: dlipeev
- * Date: 24.11.14
- * Time: 13:56
- */
+
 
 namespace b2\sprocket\moysklad\api;
 

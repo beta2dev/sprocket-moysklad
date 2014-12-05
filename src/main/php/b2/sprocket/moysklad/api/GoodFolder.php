@@ -55,6 +55,28 @@ class GoodFolder extends MoyskladObject
     private $description;
 
     /**
+     * Родительский элемент для папки или товара в папке
+     * @var string
+     */
+    protected $parentUuid;
+
+    /**
+     * @param string $parentUuid
+     */
+    public function setParentUuid($parentUuid)
+    {
+        $this->parentUuid = $parentUuid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getParentUuid()
+    {
+        return $this->parentUuid;
+    }
+
+    /**
      * @param boolean $archived
      */
     public function setArchived($archived)

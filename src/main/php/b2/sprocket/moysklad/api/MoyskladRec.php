@@ -13,7 +13,8 @@ namespace b2\sprocket\moysklad\api;
  *
  * Здесь лежат поля, обязательные для каждой сущности в МоёмСкладе, будь то объект, цена или
  */
-class MoyskladRec {
+class MoyskladRec
+{
 
     /**
      * @internal example

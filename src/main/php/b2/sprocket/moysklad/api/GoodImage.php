@@ -9,7 +9,7 @@
 
 namespace b2\sprocket\moysklad\api;
 /**
- * Class Image
+ * Class GoodImage
  *
  * изображение товара
  */

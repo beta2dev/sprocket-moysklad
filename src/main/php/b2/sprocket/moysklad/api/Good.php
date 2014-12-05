@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: Пользователь
- * Date: 24.11.14
- * Time: 11:02
- */
+
 
 namespace b2\sprocket\moysklad\api;
 
@@ -158,6 +153,29 @@ private $isSerialTrackable;
      * @var GoodImage[]
      */
     private $images;
+
+    /**
+     * Родительский элемент для папки или товара в папке
+     * @var string
+     */
+    protected $parentUuid;
+
+    /**
+     * @param string $parentUuid
+     */
+    public function setParentUuid($parentUuid)
+    {
+        $this->parentUuid = $parentUuid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getParentUuid()
+    {
+        return $this->parentUuid;
+    }
+
 
     /**
      * @param string $account
