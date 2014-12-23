@@ -24,13 +24,13 @@ changeMode="SELF">
      * @var string
      * XS
      */
-    protected $accessMode;
+    public $accessMode;
 
     /**
      * @var string
      * XS
      */
-    protected $accessMode;
+    public $readMode;
 
 
     //properties----------------
@@ -39,5 +39,61 @@ changeMode="SELF">
      * @var string
      * XS
      */
-    protected $groupUuid;
+    public $groupUuid;
+
+    /**
+     * @return string
+     */
+    public function getAccessMode()
+    {
+        return $this->accessMode;
+    }
+
+    /**
+     * @param string $accessMode
+     */
+    public function setAccessMode($accessMode)
+    {
+        $this->accessMode = $accessMode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReadMode()
+    {
+        return $this->readMode;
+    }
+
+    /**
+     * @param string $readMode
+     */
+    public function setreadMode($readMode)
+    {
+        $this->readMode = $readMode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGroupUuid()
+    {
+        return $this->groupUuid;
+    }
+
+    /**
+     * @param string $groupUuid
+     */
+    public function setGroupUuid($groupUuid)
+    {
+        $this->groupUuid = $groupUuid;
+    }
+
+
+
+
+
+
+
+
 }
