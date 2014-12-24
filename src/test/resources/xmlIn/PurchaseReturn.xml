@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<collection total="1" start="0" count="1000">
     <purchaseReturn supplyUuid="72b8a87d-86ce-11e4-90a2-8ecb002e3392"
                     targetAgentUuid="90fe27cf-86cb-11e4-90a2-8ecb002dcabe"
                     sourceAgentUuid="90fcf102-86cb-11e4-90a2-8ecb002dcabb"
@@ -31,6 +29,4 @@
             <price sum="200000.0" sumInCurrency="200000.0"/>
             <things/>
         </purchaseReturnPosition>
-
     </purchaseReturn>
-</collection>

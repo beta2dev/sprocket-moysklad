@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<collection total="1" start="0" count="1000">
+
     <demand customerOrderUuid="9602aaa6-86ce-11e4-90a2-8ecb002e394f"
             targetAgentUuid="90fe2b3f-86cb-11e4-90a2-8ecb002dcac0"
             sourceAgentUuid="90fcf102-86cb-11e4-90a2-8ecb002dcabb"
@@ -31,4 +30,3 @@
         </salesReturnsUuid>
         <extension opened="false" loadName="" consignorIndication="" transportFacility="" carNumber=""/>
     </demand>
-</collection>

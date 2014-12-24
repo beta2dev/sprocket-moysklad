@@ -7,10 +7,7 @@
  */
 namespace b2\sprocket\moysklad\api;
 
-$GLOBALS['b2foundation'] = 'c:\arbeit\fastfw\foundation\src\main\php';
-require_once 'c:\arbeit\fastfw\foundation\src\main\php\b2\sys\classloading.php';
-b2classpath('c:\arbeit\sprocket-moysklad\src\main\php\\');
-//$GLOBALS['b2classloader']
+
 
 
 

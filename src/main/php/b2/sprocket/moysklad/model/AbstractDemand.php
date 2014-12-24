@@ -81,6 +81,102 @@ class AbstractDemand extends ComingOutOperation{
      */
     private $shipmentOut;
 
+    /**
+     * @return uuid
+     */
+    public function getCustomerOrderUuid()
+    {
+        return $this->customerOrderUuid;
+    }
+
+    /**
+     * @param uuid $customerOrderUuid
+     */
+    public function setCustomerOrderUuid($customerOrderUuid)
+    {
+        $this->customerOrderUuid = $customerOrderUuid;
+    }
+
+    /**
+     * @return uuid
+     */
+    public function getFactureUuid()
+    {
+        return $this->factureUuid;
+    }
+
+    /**
+     * @param uuid $factureUuid
+     */
+    public function setFactureUuid($factureUuid)
+    {
+        $this->factureUuid = $factureUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getInvoicesOutUuid()
+    {
+        return $this->invoicesOutUuid;
+    }
+
+    /**
+     * @param uuid[] $invoicesOutUuid
+     */
+    public function setInvoicesOutUuid($invoicesOutUuid)
+    {
+        $this->invoicesOutUuid = $invoicesOutUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getSalesReturnsUuid()
+    {
+        return $this->salesReturnsUuid;
+    }
+
+    /**
+     * @param uuid[] $salesReturnsUuid
+     */
+    public function setSalesReturnsUuid($salesReturnsUuid)
+    {
+        $this->salesReturnsUuid = $salesReturnsUuid;
+    }
+
+    /**
+     * @return ShipmentOut[]
+     */
+    public function getShipmentOut()
+    {
+        return $this->shipmentOut;
+    }
+
+    /**
+     * @param ShipmentOut[] $shipmentOut
+     */
+    public function setShipmentOut($shipmentOut)
+    {
+        $this->shipmentOut = $shipmentOut;
+    }
+
 
 
 

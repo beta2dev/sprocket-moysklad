@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<collection total="1" start="0" count="1000">
+
     <purchaseOrder reservedSum="0.0" targetAgentUuid="90fcf102-86cb-11e4-90a2-8ecb002dcabb"
                    sourceAgentUuid="90fe27cf-86cb-11e4-90a2-8ecb002dcabe"
                    targetStoreUuid="90fe2502-86cb-11e4-90a2-8ecb002dcabd" applicable="true"
@@ -34,4 +33,3 @@
             <supplyRef>72b8a87d-86ce-11e4-90a2-8ecb002e3392</supplyRef>
         </suppliesUuid>
     </purchaseOrder>
-</collection>

@@ -74,5 +74,85 @@ class CustomerOrder extends Order{
      */
     private $customerOrderPosition;
 
+    /**
+     * @return uuid[]
+     */
+    public function getDemandsUuid()
+    {
+        return $this->demandsUuid;
+    }
+
+    /**
+     * @param uuid[] $demandsUuid
+     */
+    public function setDemandsUuid($demandsUuid)
+    {
+        $this->demandsUuid = $demandsUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getInvoicesOutUuid()
+    {
+        return $this->invoicesOutUuid;
+    }
+
+    /**
+     * @param uuid[] $invoicesOutUuid
+     */
+    public function setInvoicesOutUuid($invoicesOutUuid)
+    {
+        $this->invoicesOutUuid = $invoicesOutUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPurchaseOrdersUuid()
+    {
+        return $this->purchaseOrdersUuid;
+    }
+
+    /**
+     * @param uuid[] $purchaseOrdersUuid
+     */
+    public function setPurchaseOrdersUuid($purchaseOrdersUuid)
+    {
+        $this->purchaseOrdersUuid = $purchaseOrdersUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getCustomerOrderPosition()
+    {
+        return $this->customerOrderPosition;
+    }
+
+    /**
+     * @param uuid[] $customerOrderPosition
+     */
+    public function setCustomerOrderPosition($customerOrderPosition)
+    {
+        $this->customerOrderPosition = $customerOrderPosition;
+    }
+
 
 }

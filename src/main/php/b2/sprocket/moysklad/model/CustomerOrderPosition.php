@@ -7,7 +7,7 @@
  */
 namespace b2\sprocket\moysklad\model;
 
-class CustomerOrderPosition extends {
+class CustomerOrderPosition extends OrderPosition{
 /*
  * <customerOrderPosition discount="0.0" quantity="1.0" consignmentUuid="2e76e0e4-86ce-11e4-90a2-8ecb002e29e4"
                                goodUuid="2e76dcb0-86ce-11e4-90a2-8ecb002e29e2" vat="0" readMode="SELF"

@@ -12,4 +12,20 @@ class OrderPosition extends Motion {
      * @var double
      */
     protected $reserve;
+
+    /**
+     * @return float
+     */
+    public function getReserve()
+    {
+        return $this->reserve;
+    }
+
+    /**
+     * @param float $reserve
+     */
+    public function setReserve($reserve)
+    {
+        $this->reserve = $reserve;
+    }
 }

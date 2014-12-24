@@ -7,7 +7,7 @@
  */
 namespace b2\sprocket\moysklad\model;
 
-class Order extends OparationWithPositions {
+class Order extends OperationWithPositions {
     /*
     * <Order reservedSum="0.0" targetAgentUuid="90fcf102-86cb-11e4-90a2-8ecb002dcabb"
                    sourceAgentUuid="90fe27cf-86cb-11e4-90a2-8ecb002dcabe"
@@ -46,6 +46,38 @@ class Order extends OparationWithPositions {
      * XS
      */
     private $reservedSum;
+
+    /**
+     * @return dateTime
+     */
+    public function getDeliveryPlannedMoment()
+    {
+        return $this->deliveryPlannedMoment;
+    }
+
+    /**
+     * @param dateTime $deliveryPlannedMoment
+     */
+    public function setDeliveryPlannedMoment($deliveryPlannedMoment)
+    {
+        $this->deliveryPlannedMoment = $deliveryPlannedMoment;
+    }
+
+    /**
+     * @return float
+     */
+    public function getReservedSum()
+    {
+        return $this->reservedSum;
+    }
+
+    /**
+     * @param float $reservedSum
+     */
+    public function setReservedSum($reservedSum)
+    {
+        $this->reservedSum = $reservedSum;
+    }
 
 
 }

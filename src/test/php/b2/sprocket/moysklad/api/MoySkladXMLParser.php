@@ -11,6 +11,10 @@ namespace b2\sprocket\moysklad\model;
 require_once __DIR__ . './test.boot.php';
 //echo __DIR__ . './test.boot.php';
 
+define('PATH_TO_XML', __DIR__.'\..\..\..\..\..\resources\xmlIn\\');
+define('PATH_TO_DUMP',__DIR__.'\..\..\..\..\..\resources\dump\\');
+
+
 
 $GLOBALS['b2foundation'] = 'c:\arbeit\fast2\foundation\src\main\php';
 require_once 'c:\arbeit\fast2\foundation\src\main\php\b2\sys\classloading.php';
@@ -29,30 +33,32 @@ class MoySkladXMLParser extends \PHPUnit_Framework_TestCase{
 
     }
 
-    function test_Simple(){
-        $xml='<entity reservedSum="0.0"
-updated="2014-12-18T19:15:18.271+03:00"
-updatedBy="admin@zloperdov" readMode="SELF"
-accessMode="accessmode"
-changeMode="SELF">
-<accountUuid>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountUuid>
-<accountId>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountId>
-<uuid>654fda14-86ce-11e4-90a2-8ecb002e30ac</uuid>
-</entity>';
+    function test_CustomerOrder(){
+        $inXml=PATH_TO_XML.'CustomerOrder.xml';
+        $inDump=PATH_TO_DUMP.'customerOrder.dump';
+
+        $xml=file_get_contents($inXml);
+        $reference=file_get_contents($inDump);
+
+        $obj = $this->mapper->map($xml);
+        $parsedObj=var_export($obj,true);
+        $this->assertEquals($reference,$parsedObj);
+
+    }
+
+    function test_Demand(){
+        $inXml=PATH_TO_XML.'Demand.xml';
+        $inDump=PATH_TO_DUMP.'customerOrder.dump';
+
+        $xml=file_get_contents($inXml);
+        $reference=file_get_contents($inDump);
 
         $obj = $this->mapper->map($xml);
 
-        $reference=new Entity();
-        $reference->setAccessMode('accessmode');
-        $reference->setReadMode('SELF');
-        $reference->setGroupUuid(NULL);
-        $reference->setAccountUuid('90e1c841-86cb-11e4-90a2-8ecb00001cd3');
-        $reference->setAccountId('90e1c841-86cb-11e4-90a2-8ecb00001cd3');
-        $reference->setUuid('654fda14-86ce-11e4-90a2-8ecb002e30ac');
 
-        $this->assertEquals($obj,$reference);
+        $parsedObj=var_export($obj);
 
-        var_export($obj);
+        $this->assertEquals($reference,$parsedObj);
 
     }
 

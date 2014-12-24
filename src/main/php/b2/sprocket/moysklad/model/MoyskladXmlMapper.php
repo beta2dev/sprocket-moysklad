@@ -88,28 +88,28 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-        function tag_entity()
+        function msEntity()
         {
             //var_export(get_declared_classes());
             //echo  PHP_EOL;
             //echo '====>>>>'.get_class($this->origin('b2\sprocket\moysklad\model\Entity')->accountEntity());
 
 
-            return $this->origin('b2\sprocket\moysklad\model\Entity')
+            return $this//->origin('b2\sprocket\moysklad\model\Entity')
 
                 ->string('accessMode')
                 ->string('readMode')
                 ->string('groupUuid[]')
-                ->accountEntity();
+                ->msAccountEntity();
         }
 
 
         function msMoneyAmount(){
             return $this
-                //->origin('b2\sprocket\moysklad\model\MoneyAmount')
+                ->origin('b2\sprocket\moysklad\model\MoneyAmount')
                 ->money('@sum')
-                ->money('@sumInCurrency')
-                ->up();
+                ->money('@sumInCurrency');
+                //->up();
         }
 
 
@@ -138,20 +138,21 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
              */
             return $this
                 ->msEntity()
-                ->uuid('@goodPackUuid')
-                ->uuid('@consignmentUuid')
-                ->uuid('@goodUuid')
-                ->uuid('@slotUuid')
-                ->int('@long')
-                ->money('@discount')
-                ->quantity('@quantity')
-                ->vat('@vat')
                 ->object('basePrice')
                     ->msMoneyAmount()
                     ->up()
                 ->object('price')
                     ->msMoneyAmount()
                     ->up()
+                ->uuid('@goodPackUuid')
+                ->uuid('@consignmentUuid')
+                ->uuid('@goodUuid')
+                ->uuid('@slotUuid')
+                //->int('@long')
+                ->money('@discount')
+                ->quantity('@quantity')
+                ->vat('@vat')
+
                 /*->object('things')
                     ->things()
                     ->up()
@@ -192,7 +193,7 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             return $this
                 ->msEntity()
                 ->string('@updatedBy')
-                ->vDatetime('@updated');
+                ->datetime('@updated');
         }
 
 
@@ -260,7 +261,7 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->uuid("@currencyUuid")
             ->float("@rate")
             ->bool("@vatIncluded")
-            ->vDatetime("@created")
+            ->datetime("@created")
             ->string("@createdBy")
             ->uuid("@employeeUuid");
     }
@@ -331,7 +332,9 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
         function msCustomerOrderPosition(){
-            return $this->msOrderPosition();
+            return $this
+                ->origin('b2\sprocket\moysklad\model\CustomerOrderPosition')
+                ->msOrderPosition();
         }
 
         function msSalesReturnPosition(){
@@ -356,6 +359,16 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->msStockOperation();
         }
 
+
+        function msShipmentOut(){
+            return $this
+                ->msAbstractShipmentOut();
+        }
+
+        function msAbstractShipmentOut(){
+            return $this
+                ->msComingOut();
+        }
 
         function msPurchaseReturn(){
             /*
@@ -413,17 +426,19 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
       </xs:extension>
     </xs:complexContent>*/
+            ->msComingOutOperation()
             ->uuid('@customerOrderUuid')
             ->uuid('@factureUuid')
-            ->shipmentOut('shipmentOut[]')
+            ->msShipmentOut('shipmentOut[]')
             ->uuid('invoicesOutUuid/invoiceOutRef => invoicesOutUuid[]')
             ->uuid('paymentsUuid/financeInRef => paymentsUuid[]')
             ->uuid('salesReturnsUuid/salesReturnRef => salesReturnsUuid[]');
         }
 
 
-    function msDemand(){
+    function tag_demand(){
         return $this
+            ->origin('b2\sprocket\moysklad\model\Demand')
             ->msAbstractDemand()
             ->object('extension','b2\sprocket\moysklad\model\DemandExtension')
                 ->bool("opened")
@@ -433,6 +448,57 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->string("transportFacility")
                 ->string("goodPackQuantity")
                 ->string("carNumber");
+    }
+
+    function msComingInOperation(){
+        return $this
+            ->msStockOperation();
+    }
+
+    function msSupply(){
+        return $this
+            ->msShipmentIn('shipmentIn[]')
+            ->uuid('invoicesInUuid/invoiceInRef => invoicesInUuid[]')
+            ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
+            ->uuid('purchaseReturnsUuid/purchaseReturnRef => purchaseReturnsUuid[]')
+
+            ->msMoneyAmount('overhead')
+
+            ->uuid("@factureInUuid")
+            ->datetime("@incomingDate")
+            ->string("@incomingNumber")
+            ->string("@overheadDistribution")
+            ->uuid("@purchaseOrderUuid");
+    }
+
+    function msAbstractSalesReturn(){
+        return $this
+            ->uuid("@demandUuid")
+            ->uuid('lossesUuid/lossRef => lossesUuid[]')
+            ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
+            ->msSalesReturnPosition('salesReturnPosition[]');
+    }
+
+
+    function msSalesReturn(){
+        return $this
+            ->msAbstractSalesReturn();
+    }
+
+    function tag_customerOrder(){
+        return $this
+            ->msOrder()
+            ->origin('b2\sprocket\moysklad\model\CustomerOrder')
+            ->object('customerOrderPosition')
+            //->msCustomerOrderPosition('customerOrderPosition')
+                ->msCustomerOrderPosition()
+                ->up()
+
+            //->string('customerOrderPosition')
+            ->uuid('demandsUuid/demandRef => demandsUuid[]')
+            ->uuid('invoicesOutUuid/invoiceOutRef => invoicesOutUuid[]')
+            ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
+            ->uuid('purchaseOrdersUuid/purchaseOrderRef => purchaseOrdersUuid[]');
     }
 
 }
