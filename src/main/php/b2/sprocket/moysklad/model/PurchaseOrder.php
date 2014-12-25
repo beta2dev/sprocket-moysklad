@@ -78,4 +78,100 @@ class PurchaseOrder extends Order{
      */
     protected $purchaseOrderPosition;
 
+    /**
+     * @return uuid[]
+     */
+    public function getCustomerOrdersUuid()
+    {
+        return $this->customerOrdersUuid;
+    }
+
+    /**
+     * @param uuid[] $customerOrdersUuid
+     */
+    public function setCustomerOrdersUuid($customerOrdersUuid)
+    {
+        $this->customerOrdersUuid = $customerOrdersUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getInternalOrders()
+    {
+        return $this->internalOrders;
+    }
+
+    /**
+     * @param uuid[] $internalOrders
+     */
+    public function setInternalOrders($internalOrders)
+    {
+        $this->internalOrders = $internalOrders;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getInvoicesUuid()
+    {
+        return $this->invoicesUuid;
+    }
+
+    /**
+     * @param uuid[] $invoicesUuid
+     */
+    public function setInvoicesUuid($invoicesUuid)
+    {
+        $this->invoicesUuid = $invoicesUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getSuppliesUuid()
+    {
+        return $this->suppliesUuid;
+    }
+
+    /**
+     * @param uuid[] $suppliesUuid
+     */
+    public function setSuppliesUuid($suppliesUuid)
+    {
+        $this->suppliesUuid = $suppliesUuid;
+    }
+
+    /**
+     * @return PurchaseOrderPosition[]
+     */
+    public function getPurchaseOrderPosition()
+    {
+        return $this->purchaseOrderPosition;
+    }
+
+    /**
+     * @param PurchaseOrderPosition[] $purchaseOrderPosition
+     */
+    public function setPurchaseOrderPosition($purchaseOrderPosition)
+    {
+        $this->purchaseOrderPosition = $purchaseOrderPosition;
+    }
+
 }

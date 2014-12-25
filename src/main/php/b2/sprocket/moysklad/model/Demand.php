@@ -49,7 +49,24 @@ class Demand  extends AbstractDemand{
     /**
      * @var DemandExtension[]
      */
-    protected $demandExtension;
+    protected $extension;
+
+    /**
+     * @return DemandExtension[]
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * @param DemandExtension[] $extension
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    }
+
 
 
 }

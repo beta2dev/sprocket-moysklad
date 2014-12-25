@@ -6,7 +6,7 @@
  * Time: 19:30
  */
 namespace b2\sprocket\moysklad\model;
-class StockMotion {
+class StockMotion extends Motion {
     //attributes
     /**
      * @var uid
@@ -17,4 +17,39 @@ class StockMotion {
      * @var uid
      */
     protected $gtdUuid;
+
+    /**
+     * @return uid
+     */
+    public function getCountryUuid()
+    {
+        return $this->countryUuid;
+    }
+
+    /**
+     * @param uid $countryUuid
+     */
+    public function setCountryUuid($countryUuid)
+    {
+        $this->countryUuid = $countryUuid;
+    }
+
+    /**
+     * @return uid
+     */
+    public function getGtdUuid()
+    {
+        return $this->gtdUuid;
+    }
+
+    /**
+     * @param uid $gtdUuid
+     */
+    public function setGtdUuid($gtdUuid)
+    {
+        $this->gtdUuid = $gtdUuid;
+    }
+
+
+
 }

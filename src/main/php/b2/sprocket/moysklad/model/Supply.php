@@ -107,5 +107,165 @@ class Supply extends ComingInOperation{
      */
     private $purchaseReturnsUuid;
 
+    /**
+     * @return uuid
+     */
+    public function getFactureInUuid()
+    {
+        return $this->factureInUuid;
+    }
+
+    /**
+     * @param uuid $factureInUuid
+     */
+    public function setFactureInUuid($factureInUuid)
+    {
+        $this->factureInUuid = $factureInUuid;
+    }
+
+    /**
+     * @return dateTime
+     */
+    public function getIncomingDate()
+    {
+        return $this->incomingDate;
+    }
+
+    /**
+     * @param dateTime $incomingDate
+     */
+    public function setIncomingDate($incomingDate)
+    {
+        $this->incomingDate = $incomingDate;
+    }
+
+    /**
+     * @return overheadDistribution
+     */
+    public function getIncomingNumber()
+    {
+        return $this->incomingNumber;
+    }
+
+    /**
+     * @param overheadDistribution $incomingNumber
+     */
+    public function setIncomingNumber($incomingNumber)
+    {
+        $this->incomingNumber = $incomingNumber;
+    }
+
+    /**
+     * @return overheadDistribution
+     */
+    public function getOverheadDistribution()
+    {
+        return $this->overheadDistribution;
+    }
+
+    /**
+     * @param overheadDistribution $overheadDistribution
+     */
+    public function setOverheadDistribution($overheadDistribution)
+    {
+        $this->overheadDistribution = $overheadDistribution;
+    }
+
+    /**
+     * @return uuid
+     */
+    public function getPurchaseOrderUuid()
+    {
+        return $this->purchaseOrderUuid;
+    }
+
+    /**
+     * @param uuid $purchaseOrderUuid
+     */
+    public function setPurchaseOrderUuid($purchaseOrderUuid)
+    {
+        $this->purchaseOrderUuid = $purchaseOrderUuid;
+    }
+
+    /**
+     * @return MoneyAmount
+     */
+    public function getOverhead()
+    {
+        return $this->overhead;
+    }
+
+    /**
+     * @param MoneyAmount $overhead
+     */
+    public function setOverhead($overhead)
+    {
+        $this->overhead = $overhead;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getInvoicesInUuid()
+    {
+        return $this->invoicesInUuid;
+    }
+
+    /**
+     * @param uuid[] $invoicesInUuid
+     */
+    public function setInvoicesInUuid($invoicesInUuid)
+    {
+        $this->invoicesInUuid = $invoicesInUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return ShipmentIn[]
+     */
+    public function getShipmentIn()
+    {
+        return $this->shipmentIn;
+    }
+
+    /**
+     * @param ShipmentIn[] $shipmentIn
+     */
+    public function setShipmentIn($shipmentIn)
+    {
+        $this->shipmentIn = $shipmentIn;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPurchaseReturnsUuid()
+    {
+        return $this->purchaseReturnsUuid;
+    }
+
+    /**
+     * @param uuid[] $purchaseReturnsUuid
+     */
+    public function setPurchaseReturnsUuid($purchaseReturnsUuid)
+    {
+        $this->purchaseReturnsUuid = $purchaseReturnsUuid;
+    }
+
 
 }

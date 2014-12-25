@@ -26,4 +26,20 @@ class ShipmentIn extends ComingIn{
      */
     protected $overhead;
 
+    /**
+     * @return float
+     */
+    public function getOverhead()
+    {
+        return $this->overhead;
+    }
+
+    /**
+     * @param float $overhead
+     */
+    public function setOverhead($overhead)
+    {
+        $this->overhead = $overhead;
+    }
+
 }

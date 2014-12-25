@@ -74,6 +74,70 @@ class PurchaseReturn extends ComingOutOperation{
      */
     protected $purchaseReturnPosition;
 
+    /**
+     * @return uuid
+     */
+    public function getFactureUuid()
+    {
+        return $this->factureUuid;
+    }
+
+    /**
+     * @param uuid $factureUuid
+     */
+    public function setFactureUuid($factureUuid)
+    {
+        $this->factureUuid = $factureUuid;
+    }
+
+    /**
+     * @return uuid
+     */
+    public function getSupplyUuid()
+    {
+        return $this->supplyUuid;
+    }
+
+    /**
+     * @param uuid $supplyUuid
+     */
+    public function setSupplyUuid($supplyUuid)
+    {
+        $this->supplyUuid = $supplyUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return purchaseReturnPosition[]
+     */
+    public function getPurchaseReturnPosition()
+    {
+        return $this->purchaseReturnPosition;
+    }
+
+    /**
+     * @param purchaseReturnPosition[] $purchaseReturnPosition
+     */
+    public function setPurchaseReturnPosition($purchaseReturnPosition)
+    {
+        $this->purchaseReturnPosition = $purchaseReturnPosition;
+    }
+
 
 
 

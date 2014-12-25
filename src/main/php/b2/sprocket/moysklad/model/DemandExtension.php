@@ -10,12 +10,50 @@ namespace b2\sprocket\moysklad\model;
 
 
 
-class Extension {
+class DemandExtension {
     protected $opened;//="false"
+    protected $carrierUuid;
     protected $loadName;//=""
     protected $consignorIndication;//=""
     protected $transportFacility;//=""
     protected $carNumber;
+    protected $goodPackQuantity;
+
+    /**
+     * @return mixed
+     */
+    public function getGoodPackQuantity()
+    {
+        return $this->goodPackQuantity;
+    }
+
+    /**
+     * @param mixed $goodPackQuantity
+     */
+    public function setGoodPackQuantity($goodPackQuantity)
+    {
+        $this->goodPackQuantity = $goodPackQuantity;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getCarrierUuid()
+    {
+        return $this->carrierUuid;
+    }
+
+    /**
+     * @param mixed $carrierUuid
+     */
+    public function setCarrierUuid($carrierUuid)
+    {
+        $this->carrierUuid = $carrierUuid;
+    }
+
+
 
     /**
      * @return mixed

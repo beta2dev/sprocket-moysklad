@@ -34,4 +34,68 @@ class AbstractSalesReturn extends ComingInOperation{
      * @var SalesReturnPosition[]
      */
     private $salesReturnPosition;
+
+    /**
+     * @return uuid
+     */
+    public function getDemandUuid()
+    {
+        return $this->demandUuid;
+    }
+
+    /**
+     * @param uuid $demandUuid
+     */
+    public function setDemandUuid($demandUuid)
+    {
+        $this->demandUuid = $demandUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getLossesUuid()
+    {
+        return $this->lossesUuid;
+    }
+
+    /**
+     * @param uuid[] $lossesUuid
+     */
+    public function setLossesUuid($lossesUuid)
+    {
+        $this->lossesUuid = $lossesUuid;
+    }
+
+    /**
+     * @return uuid[]
+     */
+    public function getPaymentsUuid()
+    {
+        return $this->paymentsUuid;
+    }
+
+    /**
+     * @param uuid[] $paymentsUuid
+     */
+    public function setPaymentsUuid($paymentsUuid)
+    {
+        $this->paymentsUuid = $paymentsUuid;
+    }
+
+    /**
+     * @return SalesReturnPosition[]
+     */
+    public function getSalesReturnPosition()
+    {
+        return $this->salesReturnPosition;
+    }
+
+    /**
+     * @param SalesReturnPosition[] $salesReturnPosition
+     */
+    public function setSalesReturnPosition($salesReturnPosition)
+    {
+        $this->salesReturnPosition = $salesReturnPosition;
+    }
 }

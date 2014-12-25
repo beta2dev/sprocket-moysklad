@@ -1,7 +1,7 @@
 <?php
 namespace b2\sprocket\moysklad\model;
 
-class StockOperation extends Operation {
+class StockOperation extends OperationWithPositions {
 
 
     /*

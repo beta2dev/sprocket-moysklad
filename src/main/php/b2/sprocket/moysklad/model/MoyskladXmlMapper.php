@@ -300,35 +300,25 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
         function tag_purchaseOrder(){
             return $this
+                ->origin('b2\sprocket\moysklad\model\PurchaseOrder')
+                ->msOrder()
 
-                ->object('customerOrdersUuid')
-                    ->msCustomerOrdersUuid()
-                    ->up()
-
-                ->object('internalOrders')
-                    ->msInternalOrders()
-                    ->up()
-
-                ->object('invoicesUuid')
-                    ->msInvoicesUuid()
-                    ->up()
-
-                ->object('paymentsUuid')
-                    ->msPaymentsUuid()
-                    ->up()
-
-                ->object('purchaseOrderPosition')
+                ->uuid('customerOrdersUuid/customerOrderRef => customerOrdersUuid[]')
+                ->uuid('internalOrders/internalOrderRef => internalOrders[]')
+                ->uuid('invoicesUuid/invoiceInRef => invoicesUuid[]')
+                ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
+                ->uuid('suppliesUuid/supplyRef => suppliesUuid[]')
+                ->object('purchaseOrderPosition[]')
                     ->msPurchaseOrderPosition()
-                    ->up()
-
-                ->object('supplyRef')
-                    ->msSupplyRef()
                     ->up();
+
         }
 
 
         function msPurchaseOrderPosition(){
-            return $this->msOrderPosition();
+            return $this
+                ->origin('b2\sprocket\moysklad\model\PurchaseOrderPosition')
+                ->msOrderPosition();
         }
 
         function msCustomerOrderPosition(){
@@ -338,11 +328,15 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
         function msSalesReturnPosition(){
-            return $this->msComingIn();
+
+            return $this
+                ->origin('b2\sprocket\moysklad\model\SalesReturnPosition')
+                ->msComingIn();
         }
 
         function msShipmentIn(){
             return $this
+                ->origin('b2\sprocket\moysklad\model\ShipmentIn')
                 ->msComingIn()
                 ->float("@overhead");
         }
@@ -362,6 +356,7 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
         function msShipmentOut(){
             return $this
+                ->origin('b2\sprocket\moysklad\model\ShipmentOut')
                 ->msAbstractShipmentOut();
         }
 
@@ -370,7 +365,7 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->msComingOut();
         }
 
-        function msPurchaseReturn(){
+        function tag_purchaseReturn(){
             /*
              *         <xs:sequence>
           <xs:element minOccurs="0" name="paymentsUuid">
@@ -386,13 +381,25 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         <xs:attribute name="supplyUuid" type="xs:IDREF"/>
              */
             return $this
+                ->origin('b2\sprocket\moysklad\model\PurchaseReturn')
                 ->msComingOutOperation()
                 ->uuid('factureUuid')
                 ->uuid('supplyUuid')
                 ->uuid('paymentsUuid/financeInRef => paymentsUuid[]')
-                ->purchaseReturnPosition('purchaseReturnPosition[]');
+                ->object('purchaseReturnPosition[]')
+                    ->msPurchaseReturnPosition('purchaseReturnPosition[]')
+                    ->up;
+
         }
 
+
+
+        function msPurchaseReturnPosition(){
+            return $this
+                ->origin('b2\sprocket\moysklad\model\PurchaseReturnPosition')
+                ->msAbstractShipmentOut();
+
+        }
 
         function msAbstractDemand(){
             return $this
@@ -429,7 +436,12 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->msComingOutOperation()
             ->uuid('@customerOrderUuid')
             ->uuid('@factureUuid')
-            ->msShipmentOut('shipmentOut[]')
+            //->msShipmentOut('shipmentOut[]')
+            ->object('shipmentOut[]')
+                ->msShipmentOut()
+                ->up()
+
+
             ->uuid('invoicesOutUuid/invoiceOutRef => invoicesOutUuid[]')
             ->uuid('paymentsUuid/financeInRef => paymentsUuid[]')
             ->uuid('salesReturnsUuid/salesReturnRef => salesReturnsUuid[]');
@@ -440,7 +452,7 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         return $this
             ->origin('b2\sprocket\moysklad\model\Demand')
             ->msAbstractDemand()
-            ->object('extension','b2\sprocket\moysklad\model\DemandExtension')
+            /*->object('extension','b2\sprocket\moysklad\model\DemandExtension')
                 ->bool("opened")
                 ->uuid("carrierUuid")
                 ->string("loadName")
@@ -448,6 +460,23 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->string("transportFacility")
                 ->string("goodPackQuantity")
                 ->string("carNumber");
+            */
+            ->object('extension')
+                ->msDemandExtension()
+                ->up();
+    }
+
+    function msDemandExtension(){
+        return $this
+            ->origin('b2\sprocket\moysklad\model\DemandExtension')
+            ->bool("opened")
+            ->uuid("carrierUuid")
+            ->string("loadName")
+            ->string("consignorIndication")
+            ->string("transportFacility")
+            ->string("goodPackQuantity")
+            ->string("carNumber");
+
     }
 
     function msComingInOperation(){
@@ -455,14 +484,20 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->msStockOperation();
     }
 
-    function msSupply(){
+    function tag_supply(){
         return $this
-            ->msShipmentIn('shipmentIn[]')
+            ->origin('b2\sprocket\moysklad\model\Supply')
+            ->msComingInOperation()
+            ->object('shipmentIn[]')
+                ->msShipmentIn()
+                ->up()
             ->uuid('invoicesInUuid/invoiceInRef => invoicesInUuid[]')
             ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
             ->uuid('purchaseReturnsUuid/purchaseReturnRef => purchaseReturnsUuid[]')
 
-            ->msMoneyAmount('overhead')
+            ->object('overhead')
+                ->msMoneyAmount()
+                ->up()
 
             ->uuid("@factureInUuid")
             ->datetime("@incomingDate")
@@ -473,23 +508,29 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
     function msAbstractSalesReturn(){
         return $this
+            ->msComingInOperation()
             ->uuid("@demandUuid")
             ->uuid('lossesUuid/lossRef => lossesUuid[]')
             ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
-            ->msSalesReturnPosition('salesReturnPosition[]');
+
+            ->object('salesReturnPosition[]')
+                //->msCustomerOrderPosition('customerOrderPosition')
+                ->msSalesReturnPosition()
+                ->up();
     }
 
 
-    function msSalesReturn(){
+    function tag_SalesReturn(){
         return $this
+            ->origin('b2\sprocket\moysklad\model\SalesReturn')
             ->msAbstractSalesReturn();
     }
 
     function tag_customerOrder(){
         return $this
-            ->msOrder()
             ->origin('b2\sprocket\moysklad\model\CustomerOrder')
-            ->object('customerOrderPosition')
+            ->msOrder()
+            ->object('customerOrderPosition[]')
             //->msCustomerOrderPosition('customerOrderPosition')
                 ->msCustomerOrderPosition()
                 ->up()
@@ -500,5 +541,9 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
             ->uuid('purchaseOrdersUuid/purchaseOrderRef => purchaseOrdersUuid[]');
     }
+
+
+
+
 
 }
