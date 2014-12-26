@@ -45,7 +45,27 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             return $this;
         }
 
-        /**
+        /**volume
+         * Тип для weight.
+         */
+            function volume($mapExpr)
+        {
+            $this->custom($mapExpr, function($xml) {return (string)$xml;});
+            return $this;
+        }
+
+        /**volume
+         * Тип для weight.
+         */
+        function base64binary($mapExpr)
+        {
+            $this->custom($mapExpr, function($xml) {return (string)$xml;});
+            return $this;
+        }
+
+
+
+    /**
          * Тип для money.
          */
         function money($mapExpr)
@@ -197,7 +217,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-        function msLegendEntity(){
+        function msLegendEntity()
+        {
             return $this
                 ->msInfoEntity()
                 ->string('code')
@@ -267,13 +288,15 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
     }
 
 
-        function msOperationWithPositions(){
+        function msOperationWithPositions()
+        {
             return $this->msOperation();
         }
 
 
 
-        function msOrder(){
+        function msOrder()
+        {
             return $this
                 ->msOperationWithPositions()
                 ->datetime("deliveryPlannedMoment")
@@ -298,7 +321,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-        function tag_purchaseOrder(){
+        function tag_purchaseOrder()
+        {
             return $this
                 ->origin('b2\sprocket\moysklad\model\PurchaseOrder')
                 ->msOrder()
@@ -315,26 +339,30 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-        function msPurchaseOrderPosition(){
+        function msPurchaseOrderPosition()
+        {
             return $this
                 ->origin('b2\sprocket\moysklad\model\PurchaseOrderPosition')
                 ->msOrderPosition();
         }
 
-        function msCustomerOrderPosition(){
+        function msCustomerOrderPosition()
+        {
             return $this
                 ->origin('b2\sprocket\moysklad\model\CustomerOrderPosition')
                 ->msOrderPosition();
         }
 
-        function msSalesReturnPosition(){
+        function msSalesReturnPosition()
+        {
 
             return $this
                 ->origin('b2\sprocket\moysklad\model\SalesReturnPosition')
                 ->msComingIn();
         }
 
-        function msShipmentIn(){
+        function msShipmentIn()
+        {
             return $this
                 ->origin('b2\sprocket\moysklad\model\ShipmentIn')
                 ->msComingIn()
@@ -342,13 +370,15 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-        function msStockOperation(){
+        function msStockOperation()
+        {
             return $this
                 ->msOperationWithPositions();
         }
 
 
-        function msComingOutOperation(){
+        function msComingOutOperation()
+        {
             return $this
                 ->msStockOperation();
         }
@@ -365,7 +395,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->msComingOut();
         }
 
-        function tag_purchaseReturn(){
+        function tag_purchaseReturn()
+        {
             /*
              *         <xs:sequence>
           <xs:element minOccurs="0" name="paymentsUuid">
@@ -394,14 +425,16 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
 
 
-        function msPurchaseReturnPosition(){
+        function msPurchaseReturnPosition()
+        {
             return $this
                 ->origin('b2\sprocket\moysklad\model\PurchaseReturnPosition')
                 ->msAbstractShipmentOut();
 
         }
 
-        function msAbstractDemand(){
+        function msAbstractDemand()
+        {
             return $this
             /*
             <xs:complexContent>
@@ -448,7 +481,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
         }
 
 
-    function tag_demand(){
+    function tag_demand()
+    {
         return $this
             ->origin('b2\sprocket\moysklad\model\Demand')
             ->msAbstractDemand()
@@ -466,7 +500,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
                 ->up();
     }
 
-    function msDemandExtension(){
+    function msDemandExtension()
+    {
         return $this
             ->origin('b2\sprocket\moysklad\model\DemandExtension')
             ->bool("opened")
@@ -479,12 +514,14 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
 
     }
 
-    function msComingInOperation(){
+    function msComingInOperation()
+    {
         return $this
             ->msStockOperation();
     }
 
-    function tag_supply(){
+    function tag_supply()
+    {
         return $this
             ->origin('b2\sprocket\moysklad\model\Supply')
             ->msComingInOperation()
@@ -506,7 +543,8 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->uuid("@purchaseOrderUuid");
     }
 
-    function msAbstractSalesReturn(){
+    function msAbstractSalesReturn()
+    {
         return $this
             ->msComingInOperation()
             ->uuid("@demandUuid")
@@ -520,13 +558,15 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
     }
 
 
-    function tag_SalesReturn(){
+    function tag_SalesReturn()
+    {
         return $this
             ->origin('b2\sprocket\moysklad\model\SalesReturn')
             ->msAbstractSalesReturn();
     }
 
-    function tag_customerOrder(){
+    function tag_customerOrder()
+    {
         return $this
             ->origin('b2\sprocket\moysklad\model\CustomerOrder')
             ->msOrder()
@@ -540,6 +580,210 @@ class MoyskladXmlMapper extends \b2\util\XmlMapper{
             ->uuid('invoicesOutUuid/invoiceOutRef => invoicesOutUuid[]')
             ->uuid('paymentsUuid/financeOutRef => paymentsUuid[]')
             ->uuid('purchaseOrdersUuid/purchaseOrderRef => purchaseOrdersUuid[]');
+    }
+
+    function msPreference()
+    {
+
+    }
+
+
+    function msDocument()
+    {
+        return $this
+            ->msLegendEntity()
+            ->base64binary("contents")
+            ->datetime("@created")
+            ->string("@filename")
+            ->uuid("@miniatureUuid");
+    }
+
+    function msAttachableDocument()
+    {
+        return $this->msDocument();
+    }
+
+    function msGoodImage()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\GoodImage')
+            ->msAttachableDocument()
+            ->uuid("tinyUuid");
+    }
+
+    function msGoodPack()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\GoodPack')
+            ->msEntity()
+            ->float("@quantity")
+            ->uuid("@uomUuid");
+    }
+
+    function msAbstractBarcode(){
+        return $this
+            ->msEntity()
+            ->string("barcode")
+            ->string("barcodeType");
+    }
+
+    function msBarcode()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\Barcode')
+            ->msAbstractBarcode();
+    }
+
+
+    function msClassifier(){
+        return $this
+            ->msLegendEntity();
+    }
+
+
+    function msGoodPrices()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\GoodPrices')
+            ->object('price[]')
+                ->msPrice()
+                ->up();
+
+    }
+
+
+
+
+
+    function msPrice()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\Price')
+            ->msEntity()
+            ->uuid("@currencyUuid")
+            ->uuid("@priceTypeUuid")
+            ->float("@value");
+    }
+
+    function msGoodFolder(){
+        return $this
+            ->msClassifier()
+            ->object("attribute[]")
+                ->msGoodAttributeValue()
+                ->up()
+            ->bool("archived")
+            ->uuid("parentUuid")
+            ->string("productCode")
+            ->vat("vat");
+    }
+
+    function msAbstractGood()
+    {
+        return $this
+            ->msGoodFolder()
+            ->object("barcode[]")
+                ->msBarcode()
+                ->up()
+            ->object("salePrices[]")
+                ->msGoodPrices()
+                ->up()
+            ->money("minPrice")
+            ->uuid("@uomUuid")
+            ->uuid("@countryUuid")
+            ->uuid("@supplierUuid")
+            ->money("@salePrice")
+            ->uuid("@saleCurrencyUuid")
+            ->uuid("@buyCurrencyUuid");
+    }
+
+
+
+    function tag_good()
+    {
+        return $this
+            ->origin('b2\sprocket\moysklad\model\Good')
+            ->msAbstractGood()
+            ->bool("@isSerialTrackable")
+            ->money("@buyPrice")
+            ->money("@minimumBalance")
+            ->weight("@weight")
+            ->volume("@volume")
+            ->object('images[]')
+            //->msCustomerOrderPosition('customerOrderPosition')
+                ->msGoodImage()
+                ->up()
+            ->object('preferences[]')
+                ->msGoodSlotPreference()
+                ->up()
+            ->object('pack[]')
+                ->msGoodPack()
+                ->up();
+    }
+
+
+
+    function msGoodSlotPreference(){
+        return $this
+            ->origin('b2\sprocket\moysklad\model\GoodSlotPreference')
+            ->msEntity()
+            ->uuid("@slotUuid");
+
+
+    }
+
+
+    function msGoodAttributeValue(){
+            return $this
+                ->origin('b2\sprocket\moysklad\model\GoodAttributeValue')
+                ->uuid("@goodUuid")
+                ->msAttributeValue();
+    }
+
+
+    function msAttributeValue()
+    {
+            return $this
+                ->msInfoEntity()
+                ->object('file')
+                    ->msAttachmentDocument()
+                    ->up()
+                ->uuid("metadataUuid")
+                ->string("valueText")
+                ->string("valueString")
+                ->float("doubleValue")
+                ->int("longValue")
+                ->bool("booleanValue")
+                ->datetime("timeValue")
+                ->uuid("entityValueUuid")
+                ->uuid("agentValueUuid")
+                ->uuid("goodValueUuid")
+                ->uuid("placeValueUuid")
+                ->uuid("consignmentValueUuid")
+                ->uuid("contractValueUuid")
+                ->uuid("projectValueUuid")
+                ->uuid("employeeValueUuid");
+    }
+
+
+    function msAttachmentDocument()
+    {
+            return $this
+                ->origin('b2\sprocket\moysklad\model\GoodFolder')
+                ->msAttachableDocument();
+
+    }
+
+    function tag_goodFolder(){
+            return $this
+                ->origin('b2\sprocket\moysklad\model\GoodFolder')
+                ->msClassifier()
+                ->object("attribute[]")
+                    ->msGoodAttributeValue()
+                    ->up()
+                ->bool("@archived")
+                ->uuid("@parentUuid")
+                ->string("@productCode")
+                ->vat("@vat");
     }
 
 

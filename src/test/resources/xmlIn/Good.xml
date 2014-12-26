@@ -1,0 +1,26 @@
+<good isSerialTrackable="false" buyPrice="200000.0" weight="1.0" volume="1.0" minPrice="200000.0"
+      uomUuid="2ec1170c-3f69-4409-87bb-c68e0011b275" supplierUuid="90fe27cf-86cb-11e4-90a2-8ecb002dcabe"
+      salePrice="200000.0" archived="false" productCode="0002" vat="0" name="Полынь"
+      updated="2014-12-18T18:55:38.755+03:00" updatedBy="admin@zloperdov" readMode="ALL" changeMode="SELF">
+    <accountUuid>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountUuid>
+    <accountId>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountId>
+    <uuid>2e76dcb0-86ce-11e4-90a2-8ecb002e29e2</uuid>
+    <code>0002</code>
+    <externalcode>CnXXih1ihb2Dnaj8LGjwg3</externalcode>
+    <description>сушёные цветки</description>
+    <barcode barcode="2000000000015" barcodeType="EAN13" readMode="ALL" changeMode="SELF">
+        <accountUuid>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountUuid>
+        <accountId>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountId>
+        <uuid>2e76df43-86ce-11e4-90a2-8ecb002e29e3</uuid>
+    </barcode>
+    <salePrices>
+        <price priceTypeUuid="90feb5f9-86cb-11e4-90a2-8ecb002dcac3" value="200000.0" readMode="ALL"
+               changeMode="ALL">
+            <accountUuid>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountUuid>
+            <accountId>90e1c841-86cb-11e4-90a2-8ecb00001cd3</accountId>
+            <uuid>2e76e1ee-86ce-11e4-90a2-8ecb002e29e5</uuid>
+        </price>
+    </salePrices>
+    <preferences/>
+    <images/>
+</good>

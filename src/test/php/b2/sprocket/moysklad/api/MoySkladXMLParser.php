@@ -136,6 +136,38 @@ class MoySkladXMLParser extends \PHPUnit_Framework_TestCase{
         $parsedObj=var_export($obj,true);
         $this->assertEquals($reference,$parsedObj);
     }
+
+    function test_Good(){
+        $inXml=PATH_TO_XML.'Good.xml';
+        $inDump=PATH_TO_DUMP.'Good.dump';
+
+        //$demand = new Barcode();
+        //var_export($demand);
+        $xml=file_get_contents($inXml);
+        $reference=file_get_contents($inDump);
+        $obj = $this->mapper->map($xml);
+
+        //var_export($obj);
+        $parsedObj=var_export($obj,true);
+        $this->assertEquals($reference,$parsedObj);
+    }
+
+
+    function test_GoodFolder(){
+        $inXml=PATH_TO_XML.'GoodFolder.xml';
+        $inDump=PATH_TO_DUMP.'GoodFolder.dump';
+
+        //$demand = new Barcode();
+        //var_export($demand);
+        $xml=file_get_contents($inXml);
+        $reference=file_get_contents($inDump);
+        $obj = $this->mapper->map($xml);
+
+        //var_export($obj);
+        $parsedObj=var_export($obj,true);
+        $this->assertEquals($reference,$parsedObj);
+    }
+
 }
 
 

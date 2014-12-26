@@ -1,0 +1,104 @@
+b2\sprocket\moysklad\model\Good::__set_state(array(
+   'isSerialTrackable' => false,
+   'buyPrice' => '200000.0',
+   'minimumBalance' => NULL,
+   'weight' => '1.0',
+   'volume' => '1.0',
+   'images' => 
+  array (
+    0 => 
+    b2\sprocket\moysklad\model\GoodImage::__set_state(array(
+       'tinyUuid' => NULL,
+       'contents' => NULL,
+       'created' => NULL,
+       'filename' => NULL,
+       'miniatureUuid' => NULL,
+       'name' => NULL,
+       'code' => NULL,
+       'externalcode' => NULL,
+       'description' => NULL,
+       'updated' => NULL,
+       'updatedBy' => NULL,
+       'accessMode' => NULL,
+       'readMode' => NULL,
+       'groupUuid' => NULL,
+       'accountUuid' => NULL,
+       'accountId' => NULL,
+       'uuid' => NULL,
+    )),
+  ),
+   'preferences' => 
+  array (
+    0 => 
+    b2\sprocket\moysklad\model\GoodSlotPreference::__set_state(array(
+       'slotUuid' => NULL,
+       'accessMode' => NULL,
+       'readMode' => NULL,
+       'groupUuid' => NULL,
+       'accountUuid' => NULL,
+       'accountId' => NULL,
+       'uuid' => NULL,
+    )),
+  ),
+   'pack' => NULL,
+   'minPrice' => '200000.0',
+   'uomUuid' => '2ec1170c-3f69-4409-87bb-c68e0011b275',
+   'countryUuid' => NULL,
+   'supplierUuid' => '90fe27cf-86cb-11e4-90a2-8ecb002dcabe',
+   'salePrice' => '200000.0',
+   'saleCurrencyUuid' => NULL,
+   'buyCurrencyUuid' => NULL,
+   'barcode' => 
+  array (
+    0 => 
+    b2\sprocket\moysklad\model\Barcode::__set_state(array(
+       'barcode' => '2000000000015',
+       'barcodeType' => 'EAN13',
+       'accessMode' => NULL,
+       'readMode' => 'ALL',
+       'groupUuid' => NULL,
+       'accountUuid' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+       'accountId' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+       'uuid' => '2e76df43-86ce-11e4-90a2-8ecb002e29e3',
+    )),
+  ),
+   'salePrices' => 
+  array (
+    0 => 
+    b2\sprocket\moysklad\model\GoodPrices::__set_state(array(
+       'price' => 
+      array (
+        0 => 
+        b2\sprocket\moysklad\model\Price::__set_state(array(
+           'currencyUuid' => NULL,
+           'priceTypeUuid' => '90feb5f9-86cb-11e4-90a2-8ecb002dcac3',
+           'value' => 200000,
+           'accessMode' => NULL,
+           'readMode' => 'ALL',
+           'groupUuid' => NULL,
+           'accountUuid' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+           'accountId' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+           'uuid' => '2e76e1ee-86ce-11e4-90a2-8ecb002e29e5',
+        )),
+      ),
+    )),
+  ),
+   'archived' => false,
+   'parentUuid' => NULL,
+   'productCode' => '0002',
+   'vat' => '0',
+   'goodAttributeValue' => NULL,
+   'attribute' => NULL,
+   'name' => 'Полынь',
+   'code' => '0002',
+   'externalcode' => 'CnXXih1ihb2Dnaj8LGjwg3',
+   'description' => 'сушёные цветки',
+   'updated' => '2014-12-18T18:55:38.755+03:00',
+   'updatedBy' => 'admin@zloperdov',
+   'accessMode' => NULL,
+   'readMode' => 'ALL',
+   'groupUuid' => NULL,
+   'accountUuid' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+   'accountId' => '90e1c841-86cb-11e4-90a2-8ecb00001cd3',
+   'uuid' => '2e76dcb0-86ce-11e4-90a2-8ecb002e29e2',
+))
